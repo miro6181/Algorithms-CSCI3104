@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[]{algorithmicx}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%\usepackage{hyperref}
+
+
+\setlength{\headsep}{36pt}
+
+\begin{document}
+
+\lhead{{\bf CSCI 3104, Algorithms \\ Explain-It-Back 9} }
+\rhead{Name: \fbox{Michael Rogers} \\ ID: \fbox{105667404} \\ {\bf Profs.\ Grochow \& Layer\\ Spring 2019, CU-Boulder}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\phantom{Test}
+\\ A finance colleague asks for your help in developing software that will help
+her automate some of the buy and sell orders that she receives. Simplifying
+things a bit, she describes buy orders as target asset and a dollar amount to
+spend and sell orders as target asset and an amount of the asset to sell. As
+you develop this application you see a funny pattern. The US dollar (USD) to
+Pound sterling rate is 0.77 (GBP), the GBP to Canadian dollar (CAD) rate it
+1.75, and the CAD to USD rate is 0.75. You get very excited by this observation
+and immediately stop work on the automated buy/sell tool and start implementing
+a shortest path algorithm. After a few tests you are confident in your idea,
+now you pitch this new method to your friend.
+
+
+\pagebreak
+
+\newpage
+\mbox{Dear finance collegue,}
+\\ \\I have finished implementing the piece of software that you asked me to complete for you. This software will greatly increase your efficiency in processing buy and sell orders. Although I finished this task, while I was implementing this strategy, I noticed a very exciting and interesting pattern. I noticed that the transfer rate from USD to GBP is 0.77, the transfer rate from GBP to CAD is 1.75, and the transfer rate from CAD TO USD is 0.75. Allow me to elaborate on why this pattern can be extremely profitable for you with the software that I developed after I saw this. In computer science, we have something that we call a graph. However, this type of graph is not one with an x and y axis and plotted points. A graph in computer science is the concept that describes a social network like Facebook or twitter. It is multiple points (people in a social network) that are connected. In computer science we also have different algorithms that we run on graphs. One of these algorithms is something called a shortest path algorithm. The name of this algorithm is the best way to explain what it does. It finds the shortest path between two points in a graph. For example, in a social network this would find the shortest path from one person to another person via mutual friends. I know you're probably thinking, "what does Facebook have to do with my stocks?" Here’s why graphs are so vital to the pattern that I noticed: I have developed a piece of software that uses that shortest path algorithm that I mentioned earlier, to find the most profitable way to change between currency to currency so that when the currency is switched back into USD it is worth more than when you exchanged it. This piece of software will look at the exchange rates and exchange your USD into a more profitable currency and then exchange it back effectively making you money. In this current pattern, we can transfer our USD into GBP, GBP into CAD, then CAD back into USD and our profit margin is about 1.06\% profit. I know this doesn't sound like a lot, but if we run our currency through this pattern many times using this software the value of our original money is going to get higher and higher until the exchange rates change and that path is no longer profitable. Here's the beauty of this algorithm, after this patter isn't profitable, it will look through other exchange rates to find what is profitable and run the currency through that path. It essentially looks for the path with the highest net profitability. It's practically a money-making machine. If you have any questions just let me know!
+
+Thank You,
+\\A Computer Scientist you know  
+
+\newpage
+\pagebreak
+\end{document}

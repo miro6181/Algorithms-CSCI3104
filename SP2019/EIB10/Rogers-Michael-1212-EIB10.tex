@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[]{algorithmicx}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%\usepackage{hyperref}
+
+
+\setlength{\headsep}{36pt}
+
+\begin{document}
+
+\lhead{{\bf CSCI 3104, Algorithms \\ Explain-It-Back 10} }
+\rhead{Name: \fbox{Michael Rogers} \\ ID: \fbox{105667404} \\ {\bf Profs.\ Grochow \& Layer\\ Spring 2019, CU-Boulder}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\phantom{Test}
+\\One of your colleagues studies the foraging patterns in ants and wants to
+better characterize the movements of a particular colony. Her graduate students
+have already performed aerial surveys of the routes these ants use, and she
+wants to know how many sensors she needs to best capture the ebb and flow of
+the colony. While many ants go in and out from the various tunnel entrances,
+they are most interested in tracking those ants that venture all the way to end
+of the surveyed routes. Explain to your colleague how this problem can be
+modeled as a flow network and how algorithms on these networks could help
+inform where to place the sensors.
+
+\pagebreak
+
+\newpage
+\mbox{Dear Antman and/or The Wasp (See Marvel),}
+\\ \\What an interesting study you're conducting! I'm very excited you have chosen me to help you understand how algorithms and the magic of computer science can assist you in this study. This may not look like it at first glance, but this is a problem in computer science called a flow network. A flow network is a series of paths from one point to another, in other words, a network of paths that connect two points. The reason that this observation is important to computer science, is that now that we know this is a flow network, there are certain algorithms we can use on this network of tunnels to determine where it is most logical to place your sensors. In computer science there is something called a max flow-min cut algorithm. This algorithm helps us find the tunnels that provide the optimal flow from one point to the other, hence the name. A cut in a flow network is the maximum number of ants that can be in one tunnel at a given time. Allow me to explain how the algorithm works a little more in-depth to help your trust in it finding the optimal flow. The max-flow min-cut theorem states that in a flow network, the maximum amount of flow passing from the source to the sink (end-point) is equal to the total weight of the edges in the minimum cut. I know that sounds a little intimidating, so let's go ahead and break that down a little bit. In this definition it refers to "the total weight of the edges in the minimum cut". This is nothing more than some computer science terms thrown in there. Edges is referring to the paths in a flow and the total weight of the edges is the maximum amount of material that can flow through that path at a given time. In our case, it is the maximum number of ants that can be in a tunnel at any given time. This algorithm is effectively finding the most efficient tunnels to optimize getting from point A to point B in a flow network. If you'd like more evidence I would be happy to do the mathematical proof, but I won't bore you with that. As you can see, by using the max-flow min-cut theorem, we can find the most efficient ways of moving from the start to end-point. You should put your sensors in these tunnels that are deemed to be most efficient to correctly capture the flow and ebb of the ant migration. If you have any questions, feel free to ask me.
+
+Good Luck,
+\\A Computer Scientist you Know 
+
+\newpage
+\pagebreak
+\end{document}

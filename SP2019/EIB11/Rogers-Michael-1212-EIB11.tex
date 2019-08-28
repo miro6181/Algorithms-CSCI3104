@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[]{algorithmicx}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%\usepackage{hyperref}
+
+
+\setlength{\headsep}{36pt}
+
+\begin{document}
+
+\lhead{{\bf CSCI 3104, Algorithms \\ Explain-It-Back 11} }
+\rhead{Name: \fbox{Michael Rogers} \\ ID: \fbox{105667404} \\ {\bf Profs.\ Grochow \& Layer\\ Spring 2019, CU-Boulder}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\phantom{Test}
+\\ A startup has hired you as the chief technology officer (i.e., the only one who
+knows how to program). After the founders (all MBAs) finish explaining their
+vision for changing the world, you realize that what they describe can be
+reduced to the traveling salesman problem. No worries, you develop a solution
+that is a 1.5 approximation. The founders are devastated that they cannot use
+the word ``optimal'' in their next VC pitch, and wonder out loud if they need
+to get a new CTO who can do better. Convince them that an efficient optimal
+solution is unlikely (i.e., P probably does not equal NP) and that your
+solution is quite good.
+\pagebreak
+
+\newpage
+\mbox{Dear fellow executives,}
+
+I understand your disappointment with my solution that is not the efficient optimal solution, however I insist that you listen to my reasoning as any computer scientist would tell you the same thing. Replacing me as your CTO would not replace the response to the problem at hand. While I understand where you are coming from, I would like to take the time to explain my solution a little more in-depth and hopefully by the time I am finished you will understand that in our case, an efficient optimal solution is very unlikely. Before I get into the main reason that an ideal solution may not exist or be very hard to find, I'd like to walk you through the mathematical reasoning behind my solution using a couple analogies. In the computer science field, we have something called the traveling salesman problem. This is a fairly easy to understand problem on the surface, but it gets far more complex when we begin to think about it in the programming perspective. Imagine a salesman that needs to visit multiple cities on one big sales trip. He can only visit each city once and they all need to be on the same path. The problem is to figure out the most efficient way for the salesman to visit each one of these cities. Sounds easy right? It's not as easy as you would think. In computer science, we call this an NP-Hard problem. This means that it is very easy to evaluate whether a solution is correct or not, but it is incredibly hard to find an optimal solution. For example, let’s look at a set of numbers: $(1,2,3,-6,7,5)$ and let’s try to find a subset of numbers that equal 0 when added up. As you can see $(1,2,-6) \Rightarrow 1+2-6 = -3$ does not equal 0 and is thus an incorrect solution. But if we look at $(5,1,-6) \Rightarrow 5+1-6 = 0$ we can see that this subset does indeed equal 0 and is thus a correct solution. This is another NP-Hard problem like the salesman, and it gets exponentially harder as numbers in the set, or number of cities the salesman needs to visit, increases. The reason this type of problem is so hard to find an optimal solution is because you must look at every individual solution and then evaluate it. With the salesman, as the number of cities grow, it gets harder and harder to find the most optimal route because the number of solutions grows exponentially. As you can see, our current problem is a very similar problem to the traveling salesman problem. My 1.5 approximation is actually a very good solution because if we think about all the possible solutions, it is nearly impossible to find the most efficient optimal solution. You may find a better one, but the differences will be insignificant, and it will cost you much more time and money to find. I hope this has cleared up any doubts with my solution, if you have any questions about my reasoning or how the travelling salesman problem applies to our situation, feel free to reach out. 
+
+Good Luck,
+\\ Your Fellow CTO 
+
+
+\newpage
+\pagebreak
+\end{document}

@@ -101,7 +101,7 @@
 	    return ret
 	\end{verbatim}
 	\end{small}
-\makenonemptybox{2.5in}{ret stores either $-1$ or i at the start of the i\textsuperscript{th} iteration.}
+\makenonemptybox{2.5in}{ret stores either $-1$ or i at the start of the i\textsuperscript{th} iteration. Where i is the index of the found number.}
 \pagebreak
 
 \item \label{2c}
@@ -115,7 +115,7 @@
 	    return sum
 	\end{verbatim}
 	\end{small}
-\makenonemptybox{2.5in}{sum is storing A[0]+A[1]+A[2]+ ... + A[i] at the i\textsuperscript{th} iteration.}
+\makenonemptybox{2.5in}{sum is storing A[0]+A[1]+A[2]+ ... + A[i] at the start of the i\textsuperscript{th} iteration.}
 \end{enumerate}
 
 \pagebreak
@@ -125,8 +125,9 @@
 	\]
 	
 	\noindent Provide the first two steps of a proof by induction i.e. base case and the inductive hypothesis. You will be asked to complete this proof later in \textbf{PS1b}}.
-% 	\item {\itshape (1 pt)  Prove by induction that for each $n \in \mathbb{Z}^{+}$, $(2n)! < 2^{2n} (n!)^{2}$.}
-	\makenonemptybox{3in}{Base Case - $r = 0$ : }
+ %	\item {\itshape (1 pt)  Prove by induction that for each $n \in \mathbb{Z}^{+}$, $(2n)! < 2^{2n} (n!)^{2}$.}
+	\makenonemptybox{3in}{Base Case - $i = 0$ : $\sum_{i=0}^{0} r^{0} = 1 = \frac{(1-r^{0+1})}{1-r} = 1$ and thus proves our base case.
+\\ \\ Inductive Hypothesis -  Assume that for some integer k, $\sum_{i=0}^{k} r^{k} = \frac{ (1 - r^{k+1})}{ (1 - r)}$}
 	\pagebreak
 
 

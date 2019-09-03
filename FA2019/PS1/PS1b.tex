@@ -103,29 +103,31 @@ Note: The .py file should run for you to get points and name the file as \\ \tex
 \item \label{2c} (10 pts) We say that $A$ is sorted if $A$ has no flips. Design a sorting algorithm that, on each pass through $A$, examines
 each pair of consecutive elements. If a consecutive pair forms a flip, the algorithm swaps the elements (to fix the out of order pair). So, if your array A was [4,2,7,3,6,9,10], your first pass should swap 4 and 2, then compare (but not swap) 4 and 7, then swap 7 and 3, then swap 7 and 6, etc. Formulate pseudo-code for this algorithm, using nested for loops. \\
 \textbf{Hint:} After the first pass of the outer loop think about where the largest element would be. The second pass can then safely ignore the largest element because it's already in it's desired location. You should keep repeating the process for all elements not in their desired spot.
-\makenonemptybox{4in}{
-\begin{small}
-\begin{verbatim} 
-def sort_filps(arr):
-	largest = arr[0]
-	for i in length(arr):
-		for j in range(i + 1, length(arr)):
-			if arr[i] > largest and j == (i + 1):
-				largest = arr[i]
-				swap(i, j)
-\end{vertatim}
-\end{small}
 
-}
-\makenonemptybox{5.5in}{}
+\begin{verbatim}
+def swapFlip(arr):
+  for i in range(length of arr): 
+      for j in range(length of arr - i - 1): 
+            if arr[j] > arr[j + 1]: 
+                  swap(j, j + 1)
+  return(arr)
+\end{verbatim}
+\makenonemptybox{5.5in}{ ***Comments for above code***
+\\$i$ Iterates through every element in the array. 
+\\$j$ Iterates through all but the last i elements because those are already in place. 
+\\ swap() Swaps the two consecutive elements if the first is larger than the second.}
 \pagebreak
 
 \item \label{2d} (4 pts) Your algorithm has an inner loop and an outer loop. Provide the 'useful' loop invariant (LI) for the inner loop.You don't need to show the complete LI proof. 
-\makenonemptybox{3in}{}
+\makenonemptybox{3in}{Loop Invariant: $arr[j]$ and $arr[j-1]$ are sorted at the start of the $j$\textsuperscript{th} iteration.}
 \pagebreak
 
 \item \label{2e} (8 pts) Assume that the inner loop works correctly. Using a loop-invariant proof for the outer loop, formally prove that your pseudo-code correctly sorts the given array. Be sure that your loop invariant and proof cover the initialization, maintenance, and termination conditions. 
-\makenonemptybox{6in}{}
+\makenonemptybox{6in}{Loop Invariant: arr is sorted from the (length of arr) - $i$ to (length of arr) at the start of the $i$\textsuperscript{th} iteration.
+\\ \\ Initialization - At the 0\textsuperscript{th} iteration, $i = 0$, and \\(length of arr) - i = (length of arr). Thus, our loop invariant holds as the array is completely unsorted.
+\\ \\ Maintinance - Assume that the LI holds at the start of the i\textsuperscript{th} iteration. If this holds then it must be true that it holds that the $i$\textsuperscript{th} + 1 iteration as well because by the loop invariant, after each iteration, the amount of sorted
+elements increases by 1 by design.
+\\ \\ Termination - At the $i$\textsuperscript{th} iteration, $i$ is equal to (length of arr). Our LI holds because $i$ = (length of arr) : (length of arr) - $i = 0$, thus showing there are no elements in the array that are unsorted.}
 \pagebreak
 
 \end{enumerate}
@@ -139,11 +141,18 @@ def sort_filps(arr):
 	\noindent Rewrite the inductive hypothesis from Q3 on PS1a and provide the inductive step to complete the proof by induction. You can refer to Q3 on PS1a to recollect the first 2 steps.}
 % 	\item {\itshape (1 pt)  Prove by induction that for each $n \in \mathbb{Z}^{+}$, $(2n)! < 2^{2n} (n!)^{2}$.}
 	\makenonemptybox{5.5in}{Base Case - $i = 0$ : $\sum_{i=0}^{0} r^{0} = 1 = \frac{(1-r^{0+1})}{1-r} = 1$ and thus proves our base case.
-\\ \\ Inductive Hypothesis -  Assume that for some integer k, $\sum_{i=0}^{k} r^{k} = \frac{ (1 - r^{k+1})}{ (1 - r)}$
-\\ \\ Inductive Step -}
+\\ \\ Inductive Hypothesis -  Assume that for some integer k, $\sum_{i=0}^{k} r^{i} = \frac{ (1 - r^{k+1})}{ (1 - r)}$
+\\ \\ Inductive Step - \\ \\ For $i=k+1$, $\sum_{i=0}^{k+1} r^{i} = \sum_{i=0}^{k} r^{i} + (k+1) =\frac{ (1 - r^{k+1})}{ (1 - r)} + (k + 1)$ \\ \\ $= \frac{(1-r^{k+1})}{(1-r)} + \frac{(k+1)(1-r)}{(1-r)} = \frac{(1-r^{k+1})+(k+1)(1-r)}{(1-r)}
+= \frac{(1-r^{k+1})+(r^{k+1}-r^{k+2})}{(1-r)} = \frac{ (1 - r^{k+2})}{ (1 - r)}$ \\ \\ Thus proving our inductive hypothesis.
+}
+
 \pagebreak
     \item {\itshape (4 pt)  Refer to Q2b on PS1a and finish the LI based proof with all the steps.}
-    \makenonemptybox{5in}{}
+    \makenonemptybox{5in}{Loop Invariant: ret stores either -1 or i at the start of the ith iteration. Where i is the index of
+the found number.
+\\ \\ Initialization - When $i = 0$ at the 0\textsuperscript{th} iteration, ret equals its initialized value which is -1 before the loop runs, therefore our LI holds. 
+\\ \\ Maintinance - Assume that ret = -1 or $i$ at the $i$\textsuperscript{th} iteration. If this is true, then either A[i] = n or A[i] $\ne$ n. In the former, A[i + 1] cannot be equal to n because there are no duplicates in the array thus ret = n. In the ladder, A[i + 1] may or may not equal n. If not, ret remains at -1. If so, ret = i + 1.
+\\ \\ Termination - At the start of the $i$\textsuperscript{th} iteration, if A[$i$] = n then ret will store that index, otherwise, ret will remain at its initialized value of -1. And thus our LI holds.}
 	
 \end{enumerate}
 

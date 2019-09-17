@@ -149,16 +149,40 @@ The team's goal is to obtain a set of counts $\{d_{i}\}$, one for each player ty
 	\begin{enumerate}
 	\item  (10 pts) Write a greedy algorithm that will produce an optimal solution for a set of player win values of $[1, 2, 4, 8, 16]$ and prove that your algorithm is optimal for those values. Your algorithm need only be optimal for the fixed win values $[1, 2, 4, 8, 16]$. You do \textbf{not} need to consider other configuration of win values.
 	\begin{solution}
+Psudocode:\\ 
+\begin{verbatim}
+def optimal_wins(n):
+  win_vals = [1,2,4,8,16]
+  remaining = n
+  count = 0
+  while remaining not equal to 0:
+    if win_vals[lastelement] <= remaining:
+      remaining -= win_vals[lastelement]
+      count += 1
+    for i in range(0, len(win_vals)):
+      if win_vals[i] == remaining:
+          remaining = remaining - win_vals[i]
+          count += 1
+      elif win_vals[i] > remaining:
+          remaining = remaining - win_vals[i-1]
+          count += 1
+  return count
+
+\end{verbatim}
 
     \end{solution}
     \pagebreak
 
-[Additional space for solving Q3a]
+[Additional space for solving Q3a]\\ \\ 
+\underline{Proof:} \\ Base Case: $n = 0$ when the projected wins is 0, the while loop never executes, and the algorithm returns 0 players which is the same as the optimal solution, and thus the base case holds. \\ \\
+Inductive Hypothesis: Assume that at the $i^{th}$ iteration, remaining is equal to zero. \\ \\
+Inductive Step: If remaining is equal to zero at the $i^{th}$ iteration, then that means that at the $i -1$ iteration, remaining will be equal to some winvals[i]. Per the algorithm, if remaining equals any of the elements in the array, then on the next iteration, remaining will be equal to zero. However, if remaining is in between two numbers in winvals, the for loop will check to see if winvals[i] $>$ remaining, and if so, then it will subtract winvals[i-1] which is the next largest element in the list that is less than remaining. This will result in the largest possible amount being subtracted off of remaining at each iteration. This is the same solution as the optimal, thus the algorithm is optimal.
 \pagebreak
 
 \item (10 pts) Find a set of win values where your algorithm does not produce the optimal solution and show where your algorithm fails for those values. 
 \begin{solution}
-
+winvals = [1,10,18] , $n = 20$ \\ \\
+This set of numbers will make it so our algorithm will not choose the optimal solution. Because the algorithm chooses the largest element in winvals $<$ remaining the algorithm would choose 18, 1, 1 when in fact the optimal is 10,10.
 \end{solution}
 
     \end{enumerate}

@@ -81,8 +81,26 @@ Example 3 - If \textbf{k = 20} and \textbf{Pods = [0, 10, 15, 18]}. Number of st
 
 % Give an optimal greedy algorithm to determine at which charging stations you would stop. 
 \item (3 pts) Provide the time complexity of your python algorithm, including an explanation.
+\begin{verbatim}
+def chargingRoute(k, pods_lst):
+    selected_pods = [0] // O(1) 
+    for i in range(0,len(pods_lst)): // O(n)
+        if pods_lst[i] - selected_pods[-1] > k: // O(1)
+            selected_pods.append(pods_lst[i-1]) // O(1)
+
+    selected_pods.pop(0) // O(1)
+    return selected_pods // O(1)
+\end{verbatim}
+\begin{solution}
+This algorithm runs in $\Theta(n)$ time because the loop runs n times to iterate through in list inputted.
+\end{solution}
 \pagebreak
 \item (10 pts) Prove that your algorithm gives an optimal solution.
+\begin{solution}
+\underline{Base Case:} \\Destination is $\leq$ k - In this case podslst[0:n-1] $\leq$ podslst[-1] $\leq$ k where $n$ is the length of the list. This would cause the if statement to never execute, and the selectedpods list to never hold any values resulting in \textbf{[]}, which is the same as the optimal solution, and thus our base case holds.\\ \\
+\underline{Inductive Hypothesis:}\\ \begin{center}Assume that podslst[i] - selectedpods[-1] $> k.$\end{center} 
+\underline{Inductive Step:} \\ \\Since, \begin{center}podslst[i] - selectedpods[-1] $>k$\end{center} then, \begin{center}podslst[i-1] - selectedpods[-1] must be $\leq k$, and also must be $\geq$ podslst[i-2] - selectedpods[-1].\end{center} Because the input, podslst, is sorted to have $i>i-1$, the algorithm will not stop on an $i$ unless it is $>k$. This implies that podslst[i-1] must be the largest step the robot can make between charges because selectedpods[-1] is the robot's previous stop point. If we extrapolate this throughout the rest of the podslst, then our algorithm holds that it finds the largest step between recharging points. This is the same as the optimal solution, $\therefore$ the algorithm is optimal.
+\end{solution}
 \end{enumerate}
 \pagebreak
 
@@ -113,6 +131,16 @@ Example 3 - If \textbf{k = 20} and \textbf{Pods = [0, 10, 15, 18]}. Number of st
 	
 	\end{tikzpicture}  
 \end{center}
+First Iteration:
+$v_0 - v_1 = 2$ , $v_0 - v_{2:5} = \infty$\\ \\
+Second Iteration:
+$v_0 - v_1 = 2 $ , $v_0 - v_2 = 7$ , $v_0 - v_{3:5} = \infty$ \\ \\
+Third Iteration:
+$v_0 - v_1 = 2 $ , $v_0 - v_2 = 7$ ,  $v_0 - v_3 = 5$ , $v_0 - v_{4:5} = \infty$ \\ \\
+Fourth Iteration
+$v_0 - v_1 = 2 $ , $v_0 - v_2 = 7$ ,  $v_0 - v_3 = 5$ , $v_0 - v_4 = 3$ , $v_0 - v_{5} = \infty$  \\ \\
+Fifth Iteration:
+$v_0 - v_1 = 2 $ , $v_0 - v_2 = 7$ ,  $v_0 - v_3 = 5$ , $v_0 - v_4 = 3$ , $v_0 - v_{5} = 18$  \\ \\
 \pagebreak
 
 

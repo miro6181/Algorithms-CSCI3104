@@ -65,11 +65,11 @@
 \begin{enumerate}
 \item (1 pt) What is the definition of a Minimum Spanning Tree (MST)?
 \begin{solution}
-
+Given a conncted, undirected graph G=(V,E) where V are verticies and E are edges, a minimum spanning tree is a subgraph that is an undirected tree that contains all verticies in G with minimum weight.
 \end{solution}
 \item (1 pt) Describe in one or two sentences, a greedy rule for constructing an MST.
 \begin{solution}
-
+At each step determine an edge $(u,v)$ that can be added to some set of edges A such that A $\cup$ (u,v) is also a subset of a minimum spanning tree.
 \end{solution}
 
 \item (3 pts) How many unique MSTs does the following graph have :
@@ -81,14 +81,16 @@
 
 
 \begin{solution}
-
+There are 2 minimum spanning trees. $$A=[(A,E) ,(E,B), (E,F), (F,G), (G,C), (G,D), (G,H)] =19$$ $$A=[(A,E) ,(B,F), (E,F), (F,G), (G,C), (G,D), (G,H)]=19$$
 \end{solution}
 
 \pagebreak
 \item (3 pts) Suppose that you have calculated the MST of an undirected graph $G=(V,E)$ with positive edge weights. \\
 If you increase each edge weight by 2, will the MST change? Prove that it cannot change or give a counterexample if it changes. (Note: Your proof, if there is one, can be a simple logical argument.)
 \begin{solution}
+The MST will not change.
 
+\underline{Proof:} Spose' some integer $k$ is the weight of a some edge $\in$ G.\\ \\ If $k = j$ where $j = 2k$ then $\frac{j}{2} = k$ and $\frac{1}{2}\sum_{j=1}^{n} j = \sum_{k=1}^{n} k$ \\ \\ $\Rightarrow \frac{3}{2}+\frac{4}{2}+\frac{5}{2} + ... + \frac{2k}{2} = 1+2+3+...+k$ \\ \\ Since the two series are equal, it holds that if the each weight in the tree is increased by 2 then each weight of the MST will increase by 2 as well. Thus our MST will remain with the same edges in G. 
 
 \end{solution}
 \pagebreak
@@ -96,7 +98,8 @@ If you increase each edge weight by 2, will the MST change? Prove that it cannot
 \item (3 pts) Suppose that you have calculated the shortest paths to all vertices from a fixed vertex $s\in V$ of an undirected graph $G=(V,E)$ with positive edge weights. \\
 If you increase each edge weight by 2, will the shortest paths from $s$ change? Prove that it cannot change or give a counterexample if it changes.(Note: Just as in Part a, your proof can be a simple logical argument.)
 \begin{solution}
-
+The overall weight of the shortest path will change, but the edges comprising the shortest path will not. \\ \\ 
+\underline{Proof:} \\ \\ The same logic can be followed as in 4. If all of the edge weights $e_{i,j}$ increase by two, then the graph will simply be the same graph with larger weights. Therefore, the edges comprising the shortest path will not change. However, since every weight in the shortest path will be increased, then the overall weight of the shortest path to each point will become larger.
 \end{solution}
 
 \pagebreak

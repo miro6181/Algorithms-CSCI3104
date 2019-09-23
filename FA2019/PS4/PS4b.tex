@@ -72,11 +72,26 @@
 
 \item (10 pts) For a directed graph with positive weights, we define the max-weight of a path from $s$ to $d$ as the maximum of the edge weights along the path. For example, if the path from A to D has edges and weights of $e_{AB} = 5$, $e_{BC} = 4$, and $e_{CD}=1$, the length of the path is defined as $e_{AB} + e_{BC} + e_{CD}$, and the max-weight is 5.
 \begin{enumerate}
-\item(5 pts) Give an algorithm to compute the smallest max-weight paths from a source vertex s to all other vertices. In this problem, you are changing the definition of length of the path from A to D to $max(e_{AB}, e_{BC}, e_{CD})$ (Hint: Your algorithm should be a modification of Dijkstra's algorithm presented in Lecture.)
+\item(5 pts) Give an algorithm to compute the smallest max-weight paths from a source vertex s to all other vertices. In this problem, you are changing the definition of length of the path from A to D to $max(e_{AB}, e_{BC}, e_{CD})$ (Hint: Your algorithm should be a modification of Dijkstra's algorithm presented in Lecture.)\\ \\
 
-\begin{solution}
-
-\end{solution}
+\begin{verbatim}
+def shortestPath(G,s): 
+   dist(s) = 0 
+   dist(v) = Infinity for all v-s
+   max = 0
+   Q = Min priority queue
+   Q.add(All v in G)
+   while Q ! empty:
+      u = Q.pop()
+      for each v in u.adj:
+         d = dist(u) + e(u,v)
+         if d > dist(u):
+            dist(u) = d
+            prev(v) = u
+            if d > max:
+               max = e(u,v)
+   return G
+\end{verbatim}
 
 \pagebreak
 \item(5 pts) Prove the correctness of your algorithm.
@@ -98,7 +113,7 @@
 
 \item (4 pts) In what order would Prim's algorithm add edges to the MST if we start at vertex $A$? 
 \begin{solution}
-
+(A,E),(E,F),(E,B),(F,G),(G,H),(G,C),(G,D)
 \end{solution}
 \pagebreak
 \item (7 pts) In what order Kruskal's would add the edges to the MST? For each edge added by Kruskal's sequentially, give a cut that justifies it's addition. 

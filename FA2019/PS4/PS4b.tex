@@ -78,7 +78,7 @@
 def shortestPath(G,s): 
    dist(s) = 0 
    dist(v) = Infinity for all v-s
-   max = 0
+   max(v) = 0 // Set max in a path from s to v to 0
    Q = Min priority queue
    Q.add(All v in G)
    while Q ! empty:
@@ -88,8 +88,8 @@ def shortestPath(G,s):
          if d > dist(u):
             dist(u) = d
             prev(v) = u
-            if d > max:
-               max = e(u,v)
+            if e(u,v) > max(d):
+               max(d) = e(u,v)
    return G
 \end{verbatim}
 
@@ -97,7 +97,11 @@ def shortestPath(G,s):
 \item(5 pts) Prove the correctness of your algorithm.
 \end{enumerate}
 \begin{solution}
-
+\underline{Proof:} \\ \\ 
+\underline{Base Case:} Before the algorithm executes, the max edge in a given path is zero given by the line of code max(v) = 0. This means that for and path from s to some v = 0 which makes sense because no paths have been explored. Thus our base case holds. \\ \\ 
+\underline{Inductive Hypothesis:} Assume that for some path $P$, at the $1,2,3, ... ,k^{th}$ iteration of the algorithm, the max(P) = max(d) \\ \\ \\
+\underline{Inductive Step:} Then we can say at the $k+1^{th}$ iteration if $\exists$ $e(u,v)$ S.T. $e(u,v) > max(d)$ then the max(d) = e(u,v). The algorithm will increase the max value associated with the path at the $k+1^{th}$ iteration and this will continue until the end of the path is reached. This in turn will result in max(d) holding the max value in some P at the end of the $k+1^{th}$ iteration. \\ \\ \\
+\begin{center}$\therefore$ shortestPath(G,s) stores the smallest max weight of a given path P \end{center}
 \end{solution}
 
 \pagebreak
@@ -124,7 +128,7 @@ def shortestPath(G,s):
 \hline
  (A,E) &  1= \{A,B,C,D\}, 2 = \{E,F,G,H\}\\  
  (E,F) &  1= \{A,E\}, 2 = \{B,F,C,G,D,H\}\\   
- (F,B) &  1= \{A,E,F\}, 2 = \{B,C,G,D,H\}\\   
+ (E,B) &  1= \{A,E,F\}, 2 = \{B,C,G,D,H\}\\   
  (F,G) &  1= \{A,E,B,F\}, 2 = \{C,G,D,H\}\\   
  (G,H) &  1= \{A,E,F,B,C,G\}, 2 = \{D,H\}\\   
  (G,C) &  1= \{A,B,E,F,G\}, 2 = \{C,D,H\}\\   
@@ -158,7 +162,7 @@ Every minimum limiting spanning tree is not necissarily a MST. \\ \\ Spose' we h
 
 %Is every MST of $G$ a minimum-limiting tree of $G$? Prove or give a counterexample.
 \begin{solution}
-\underline{Proof:} \\ \\ \underline{Exchange Argument:}
+\underline{Proof:} \\ \\ \underline{Exchange Argument:} \\ \\ Spose' T is an MST of G and T' is a minimum limiting tree of G. Say there is some $e \in T$ and $e' \in T'$ If T is not a minimum limiting tree, then the largest values in $T$ and $T'$ respectivley must be $e > e'$ \\ \\ $T=\{e_1, e_2, ... , e\}, T' = \{e_1, e_2, ... , e'\}$, Where $e$ and $e'$ are the limiting values of $T$ and $T'$ respectivley. If $T= \{e_1,e_2,...,e'\}, T'=\{e_1,e_2,...,e\}$ then e will either create a cycle in the MST or contradict a cut made by kruskals in finding the MST. \\ \\In order for our MST to be a MLT, $\exists e \in T$ S.T. $e \leq e'$ If we exchange $e$ for $e'$, then we see that T is still a MST, and also an MLT. But in order for T to be an MST, the overall weight of the tree $T \leq T'$. Unless $e' \in T$ this inequality is not possible. Therefore $e = e'$ and $T$ must be a MST as well as a MLT of G.
 \end{solution}
 
 \end{enumerate}

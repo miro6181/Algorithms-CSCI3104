@@ -80,26 +80,56 @@
 \begin{enumerate}[label=(\alph*)]
 \item (2 pts) Run Dijkstra's algorithm on this graph to obtain a tree of shortest paths. Use vertex $1$ as the source vertex.
 \begin{solution}
-
+Table of Solved Verticies
+\begin{center}
+\begin{tabular}{ |c|c|} 
+ \hline
+ Verticy & Shortest Path from 1 \\ 
+\hline
+ 1 & 0 \\ 
+ 2 & 2 \\ 
+ 4 & 5 \\
+ 5 & 6 \\ 
+ 3 & 16 \\
+ \hline
+\end{tabular}
+\end{center}
+Selected Edges = \{(1,2), (2,5), (1,4), (2,3)\}
 \end{solution}
 \pagebreak
 
 
 \item (2 pts) Run Kruskal's algorithm on this graph to obtain a minimum spanning tree.
 \begin{solution}
-
+Table of Selected Edges for MST
+\begin{center}
+\begin{tabular}{ |c|c|} 
+ \hline
+ Edge & Select/Disregard \\ 
+\hline
+ (1,2) & Select \\ 
+ (2,5) & Select \\ 
+ (2,4) & Select \\
+ (1,4) & Diregard \\ 
+ (2,3) & Select \\
+ (3,5) & Disregard \\
+ (4,5) & Disregard \\
+ \hline
+\end{tabular}
+\end{center}
+Selected Edges=\{(1,2), (2,5), (2,4), (2,3)\}\\
 \end{solution}
 
 
 \item (1 pts) Is the tree of shortest paths produced by Dijkstra's algorithm a minimum spanning tree? Justify your answer.
 \begin{solution}
-
+Yes, the tree of shortest path produced by Dijsktra's Algorithm is also a minimum spanning tree of the graph. If we look at the MST produced by kruskals, the overall weight is 25. The overall weight of the tree produced by Dijsktra's also has a weight of 25. \\
 \end{solution}
 
 
 \item (2 pts) Find two vertices $u$ and $v$, where the $u-v$ path in the Kruskal tree is not a shortest $u-v$ path.
 \begin{solution}
-
+Kruskal's selected (2,4) when Dijkstra's selected (1,4). The path from 1 to 4 in Dijkstra's is equal to 5 while in Kruskal's it is equal to 7.
 \end{solution}
 
 \end{enumerate}
@@ -107,7 +137,8 @@
 \pagebreak
 \item (1 pt) Provide a brief description of what the \textit{find(v)} and \textit{union(A,B)} features of the union-find algorithm produce. 
 \begin{solution}
-
+\textit{find(v)} - The \textit{find(v)} function returns the name of the leader of the cluster that contains $v$ when working with disjoint sets with Union Find. \\ \\ 
+\textit{union(A,B)} - The \textit{union(A,B)} function is used in Union Find and is used to fuse 2 clusters, A and B, together to create one when working with disjoint sets.
 \end{solution}
 
 \item (3 pts) Identify three edges in the following graph $G$ that won't be included in any MST of $G$. Provide a 3-4 sentence explanation of your answer.  
@@ -117,7 +148,7 @@
 \end{center}
 \end{figure}
 \begin{solution}
-
+NoMST = \{(D,H), (C,D), (A,B)\} \\ \\ These 3 edges cannot be apart of the MST because of the cut property. There is no cut that you can make that will make (D,H), (C,D), or (A,B) the shortest path going into any of the verticies B,C,D. This is one of the properties that makes Kruskal's algorithm optimal, so if that property is broken, then there's no way any MST can contain any of these edges.
 \end{solution}
 
 

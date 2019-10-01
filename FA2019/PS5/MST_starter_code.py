@@ -94,9 +94,14 @@ def find(vertex):
 ####################################################################################
 
 
-def union():
-    #TODO
-    pass
+def union(x,y):
+    if find(x) < find(y):
+        leader_dict[x] = y
+    elif find(x) > find(y):
+        leader_dict[y] = x
+    else:
+        leader_dict[y] = x
+        find(x) += 1
 
 
 
@@ -150,7 +155,13 @@ if __name__ == '__main__':
     # and use it along with the find() to write Kruskal's algorithm to populate
     # 'kruskal_selected_edges' list
     # You are allowed to change the signature of the union function
-
+    while len(sorted_edges) != 0: # While sorted_edges is not empty
+        sorted_edges.pop() # Pop min edge in list
+        x = find(sorted_edges[0])
+        y = find(sorted_edges[1])
+        if x != y: # Check for cycles
+            kruskal_selected_edges.append(sorted_edges[0]) # If no cycles, add edge to kruskal_selected_edges
+            union(x,y) # Merge the two clusters
 
 
 

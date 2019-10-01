@@ -123,6 +123,9 @@ if __name__ == '__main__':
 
     print("Edges considered (in ascending order) for this graph = ", len(sorted_edges))
 
+    # A dictionary that has key as edge (u, v) and value as the length of the edge
+    length_of_edge = {(u, v):d for (u, v, d) in edges_to_consider}
+
     # 'Find' function can be easily emulated via dict and
     # initially all vertices form their own component and point to just themselves
     # 'leader_dict' has key as vertex and value as it's leader vertex
@@ -142,8 +145,10 @@ if __name__ == '__main__':
     # Note that after the union call, you need to merge the components and
     # update the relevant leaders in 'leader_dict' otherwise find() won't work as expected
 
-    # Your solution can start after this comment. You should also finish the 'union()' function and
-    # you are allowed to change the signature of the union function
+    # Your solution can start after this comment. You should also finish the 'union()' function
+    # and use it along with the find() to write Kruskal's algorithm to populate
+    # 'kruskal_selected_edges' list
+    # You are allowed to change the signature of the union function
 
 
 

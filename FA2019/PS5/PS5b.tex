@@ -119,7 +119,7 @@
     n = 101
 \end{verbatim}
 \begin{solution}
-
+This cannot be a valid Huffman code because Huffman codes are prefix codes. The algorithm must have an error in it because no code can be a prefix for another, and S is a prefix for c, i, and e and c is a prefix for e, etc.
 \end{solution}
 \pagebreak
 
@@ -138,20 +138,26 @@ would output 1, 2, 4.
     \item (3 pts) Describe the graph data structure that your algorithm will use for this problem.
     
     \begin{solution}
-
+For this problem, the graph will be an undirected graph where all verticies have edges to all of the verticies that are adjacent to it. For example, if the 0 in the top left hand corner is s, it would have edges from $s-0$, $s-2$, $s-1$. 
     \end{solution}
 \pagebreak
     
     \item (2 pts) Provide a 3-4 sentence description of how your algorithm works, including how the matrix is converted to the graph, how adjacent vertices are identified, and how the algorithm traverses the graph to identify connected vertices.
     
     \begin{solution}
-
+This algorithm will go through each vertex in the graph and check if the value of the vertex is 0. If not, it will move on to the next. For each vertex equal to zero, it will iterate through it's adjacent verticies and select edges where the adjacent vertex is 0. It will then mark the vertex as visted and move on to the next vertex with value 0, or move on to the next.
     \end{solution}
     
     \item (5 pts) Write an algorithm to solve this problem. 
     
-    \begin{solution}
-
+    \begin{solution}Pseudocode:
+\begin{verbatim} 
+def selectPonds(G):
+   for each vertex in G: // Add edges between all adjacent verticies
+      vertex.adjLst.append(every vertex that is adjacent)
+   for 
+   
+\end{verbatim}
     \end{solution}
     
 \end{enumerate}

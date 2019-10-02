@@ -72,18 +72,20 @@
 \item (1 pt) What do the edge weights of a graph $G$ in a maximum-flow network represent?
 
 \begin{solution}
-
+Capacity
 \end{solution}
 
 \item (2 pts) What are the two conditions that must be met for network flow?
 \begin{solution}
-
+Capacity - $\forall$ e $\in$ E, for some graph $G=(V,E)$, $0\leq f(e) \leq c(e)$ \\ \\ 
+Conservation - $\forall$ v $\in$ V, for some graph $G=(V,E)$, $$\sum_{\text{e into v}} f(e) = \sum_{\text{e out of v}} f(e)$$
 \end{solution}
 
 
 \item (2 pts) What do the edge weights in the residual graph $G_f$ represent? Include both forward and backward edges.
 \begin{solution}
-
+Forward Edges - Forward edges represent the amount of remaining units of flow that can be pushed through that edge.\\ \\
+Backward Edges- Represent the amount of flow that can be pushed back to a vertex in a given edge.
 \end{solution}
 
 \pagebreak
@@ -97,17 +99,20 @@
 \begin{enumerate}
 \item (1 pts) Can the max flow be 5 (capacity($e_{sa}$) + capacity($e_{sc}$))? Justify your answer in one sentence.
 \begin{solution}
-
+No, becuase the max flow capacity that can go into $t$ is 4 and since \\flow $\geq$ capacity, it cannot be possible.
 \end{solution}
 
 \item (2 pts) For the graph, identify one simple $s-t$ path and the bottleneck edge value on that path. Also report the maximum allowed flow on this $s-t$ path.
 \begin{solution}
-
+For the path $s-a-b-t$ the bottleneck value is 1 which comes from edge $s-a$. The max flow on this path is 1 because if it were bigger then \\flow $\geq$ capacity for $s-a$.
 \end{solution}
 
 \item (2 pts) Assuming all $f(e)$ are initially 0 where $f$ represents flow, what are the residual capacities on the forward and backward edges of $G_f$ after one iteration of the Ford-Fulkerson algorithm. Use the simple path you identified in Part b. 
-\begin{solution}
-
+\begin{solution} Residual Values: \\
+$s-a$ = 0, $(s-a)'$ = 1 \\ 
+$a-b$ = 1, $(a-b)'$ = 1 \\ 
+$b-t$ = 1, $(b-t)'$ = 2 \\ 
+\\ All other edges are still set to 0
 \end{solution}
 
 \end{enumerate}

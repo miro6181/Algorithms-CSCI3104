@@ -93,21 +93,38 @@ Clearly show each round with \\
 Also, report the Max-Flow after the algorithm terminates.
 
 \begin{solution}
-
+Paths - \\
+Path 1: s-a-c-d-t, Bottleneck: 2, Additional Flow: 2, Total Flow at iteration: 2\\
+Path 2: s-c-d-t, Bottleneck: 7, Additional Flow: 7, Total Flow at iteration: 9\\
+Path 3: s-c-a-b-t, Bottleneck: 2, Additional Flow: 2, Total Flow at iteration: 11\\
+Path 4: s-a-d-b-t, Bottleneck: 6, Additional Flow: 6, Total Flow at iteration: 17\\
+Path 5: s-a-b-t, Bottleneck: 2, Additional Flow: 2, Total Flow at iteration: 19\\
+Algorithm Terminates. Max Flow = 19 \\
+Pictures Associated with each iteration listed below.\\ \\ \\
+Path 1: \\
+\includegraphics[scale=0.6]{Q1_P1.png}\\
+Path 2: \\
+\includegraphics[scale=0.6]{Q1_P2.png}\\
+Path 3: \\
+\includegraphics[scale=0.6]{Q1_P3.png}\\
+Path 4: \\
+\includegraphics[scale=0.6]{Q1_P4.png}\\
+Path 5: \\
+\includegraphics[scale=0.6]{Q1_P5.png}\\
 \end{solution}
 
-\pagebreak
-(more space to solve Q1a)
 \pagebreak
 
 \item (3 pts) Show the final flow f(e) for the edges of the original graph when the Ford-Fulkerson algorithm terminates.
 \begin{solution}
-
+Final Flow: \\
+\includegraphics[scale=0.6]{Q1b.png}
 \end{solution}
 
 \item (4 pts) Find the minimum capacity cut with respect to the capacities on the original graph. Is this minimum capacity equal to the Max-Flow that you earlier identified? Justify your answer in a sentence. Also, report the crossing edges in this cut that are saturated (can't carry any more flow).
 \begin{solution}
-
+Min Cut: \\ 
+The min cut would divde the graph into two disjoint sets: A = \{s\}, B = \{a,b,c,d,t\} \\ This is the min cut because there is no other cut you can make in the graph, other than the same cut to separate t, that is less than 20. In this min cut, the edge s-a is saturated.
 \end{solution}
 
 \end{enumerate}
@@ -121,12 +138,13 @@ Also, report the Max-Flow after the algorithm terminates.
     
     
 \begin{solution}
-
+By the flow conservation property, $$\sum_{\text{e out of V}} f(e) = \sum_{\text{e out of V}} f(e) \text{  ,where V is some vertex in G}$$ \\
+Since this property is an essential property of a valid flow network, it must be the case that $\forall$  V $\in (X,Y)$ $\sum_{\text{e out of V}} f(e)$ must be equal to $\sum_{\text{e into V}} f(e)$ on the other side of the cut. If this was not the case, it would not be a valid flow network.
 \end{solution}
 
     \item (5 pts) Use the above proof (from part Q3a) to prove that the value of the flow $a$ $\leq$ Capacity of the cut $(X, Y)$.
 \begin{solution}
-
+Another fundamental property of a flow network is the fact that a flow cannot exceed the capacity of an edge. If the flow $a$ exceeds that capacity of the cut, then it would be violating the rule that was just proved above. If $$\sum_{\text{e out of V}} f(e) > \sum_{\text{all edges in cut}}f(e)$$ then the the flow out of the cut must be equal to the flow into the cut by the flow conservation property. If this is the case, then it is violating an essential rule of flow networks. Either there would be verticies that are retaining flow, or the capacity would be broken, both of which constitute an invalid flow. 
 \end{solution}
 \end{enumerate}
 
@@ -147,17 +165,15 @@ Help them come up with an algorithm to find an offer set that gets the maximum s
 \begin{enumerate}
     \item (6 pts) Draw a network $G$ to represent this problem as a flow maximisation problem for the example given above. Clearly indicate the source, the edge directions, the sink and the capacities and label the vertices.
 \begin{solution}
-
+\includegraphics[scale=0.5]{candidates.png}
 \end{solution}
-
+\pagebreak
     
     \item (5 pts) Assume that you have access to Fork-Fulkerson sub-routine called \textbf{Ford-Fulkerson(G)} that takes a network and gives out max-flow in terms of f(e) for all the edges. How will you use this sub-routine to find the offer set that employs the maximum number of students. Clearly explain your solution.
 
 \begin{solution}
-
+I would use this sub-routine to get an idea of how many students can be pushed through a channel from source to sink. In other words, I would use this to find the bottlenecking value of the graph which will help with pushing flow through the graph. This would help the algorithm know how many companies already have suitable matches. 
 \end{solution}
-\pagebreak
-(Space to solve Q3)
 
 \end{enumerate}
 

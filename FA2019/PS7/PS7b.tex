@@ -80,16 +80,21 @@ If Q2 asks for a python code, please submit it with the following naming convent
 \begin{enumerate}
     \item (1 pt) What are the best possible and the worst possible pivots for Quicksort?
 \begin{solution}
-
+Worst Case: One sub-array has $n-1$ elements and the other sub-array has zero elements. This would mean either the pivot is the last or first element in the array. \\ \\ 
+Best Case: Each sub-array have n/2 elements. This would mean the pivot is exaclt in the middle of the array.
 \end{solution}
 
     \item (4 pts) Write down a recurrence relation for this version of QuickSort and give its asymptotic solution. 
 \begin{solution}
-
+$T(n) = 2T(\frac{n}{2}) + \Theta(n)$ \\ \\
+Using Master's Theorem: \\
+$\log_b a = \log_2 2 = 1, k = 1$ \\ \\
+Case 2:
+$$\Rightarrow T(n) \in \Theta(n\log n)$$
 \end{solution}
     \item (2 pts) Provide a verbal explanation of how this {\tt Partition} algorithm affects the running time of QuickSort.
 \begin{solution}
-
+The {\tt Partition} function in this algorithm essentially determines the entire running time of the algorithm. {\tt Partition} determines where the pivot point is, and as you can see in part a, the difference of the pivot point is dependent on the elements of the array. If the elements cause {\tt Partition} to pick the last or first element in the array, then it will greatly hurt the runtime because it will have to sort n-1 elements.
 \end{solution}
 
 \end{enumerate}
@@ -113,8 +118,27 @@ Follow the naming convention for python code mentioned on Page 2.
 
 
 \pagebreak
-\begin{solution}
-Erase this before you answer - This space is NOT for the code but only for the table  or plot.
+\begin{solution} Table of solutions: \\
+\begin{center}
+\begin{tabular}{ |c|c| } 
+ \hline
+ slowSort & fastSort \\ 
+\hline 
+ 2 & 4 \\ 
+ 15 & 8 \\
+ 73 & 16 \\
+ 223 & 32 \\
+ 980 & 64 \\
+ 3946 & 128 \\
+ 15729 & 256 \\
+ 63249 & 512 \\
+ 258675 & 1024 \\
+ 1076155 & 2048 \\
+ 4240854 & 4096 \\
+ \hline
+\end{tabular}
+\end{center} 
+My counting of flips is not correct. I couldn't figure out how to fix it, but the algorithm does implement mergesort and sorts the array.
 \end{solution}
 
 \end{enumerate}
@@ -154,23 +178,26 @@ Follow the naming convention for the python code mentioned on Page 2.
 \begin{enumerate}
 \item (4 pts) Using the following array $A$ with $n=20$, show one iteration of this partitioning strategy on the array $$A=[34, 45, 32, 1, 23, 90, 12, 13, 43, 54, 65, 76, 67, 56, 45, 34, 44, 55, 23, 2]$$. Clearly identify all variables.\\
 \begin{solution}
-
+First iteration: \\
+$S = [34, 1, 54, 65, 67, 34, 23, 2]$ , Sorted S = $[1, 2, 23, 34, 34, 54, 65, 67]$, $m = 34$ \\ \\
+$A_1 = [34, 32, 1, 23, 12, 13, 23, 2]$, $A_2 = [45, 90, 43, 54, 65, 76, 67, 56, 45, 44, 55]$ \\ \\
+After this first iteration, the algorithm will run recursivley on the two sub arrays until the array is sorted.
 \end{solution}
 \pagebreak
 
 \item (4 pts) If the element $m$ obtained as the median of $S$ is used as the pivot, what can we say about the sizes of the two partitions of the array $A$? \textbf{Hint: Think about the best and worst possible selections for the values in S.}\\
 \begin{solution}
-
+Unless $S$ is the highest or lowest $2\lfloor \sqrt{n} \rfloor$ elements in the array, then on average, the two arrays will be similar in size. At the worst case senario, there will be $\lfloor \sqrt{n} \rfloor$ numbers in one sub-array.
 \end{solution}
 
 \item (3 pts) How much time does it take to sort $S$ and find its median? Give a $\Theta$ bound.\\
 \begin{solution}
-
+There are only $2\lfloor \sqrt{n} \rfloor$ elements in the array. Therefore, in order to find the median we need to find the element in the middle of the array. This will take $\Theta(\sqrt{n})$ to find it's median because the array is sorted. 
 \end{solution}
 
 \item (5 pts) Write a recurrence relation for the worst case running time of QuickSort with this pivoting strategy.\\
 \begin{solution}
-
+Insertion sort takes $O(n^2)$ to sort a given array at worst case. Since we won't be sorting an array with Insertion sort will be used on at most $2\lfloor \sqrt{n} \rfloor$ elements. This means that the theata bound to sort is $O((2\sqrt{n})^2) = O(4n)$. As found in part c, finding the median requires $\Theta(\sqrt{n})$ to find the so the reccurence is $T(n) = T(n-\sqrt{n}) + \Theta(\sqrt{n})$
 \end{solution}
 \end{enumerate}
 

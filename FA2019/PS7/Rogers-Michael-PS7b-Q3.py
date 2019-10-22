@@ -1,26 +1,27 @@
 def h_index_calculator(arr):
 
     #Using Binary Search
-    n = len(arr)
-    start = 0
-    end = n-1
-
-    while start <= end:
-        middle = (start + end) // 2
-        if arr[middle] == n-middle:
-            return arr[middle]
-        elif arr[middle] < n - middle:
-            start = middle + 1
-        else:
-            end = middle - 1
-    return n - end - 1
+    # low = 0
+    # high = len(arr) - 1
+    #
+    # while low <= high:
+    #     midpoint = (low + high) // 2
+    #     if arr[midpoint] == len(arr) - midpoint:
+    #         return arr[midpoint]
+    #     elif arr[midpoint] < len(arr) - midpoint:
+    #         low = midpoint + 1
+    #     else:
+    #         high = midpoint - 1
+    # return len(arr) - high - 1
 
 
     # Linear Search
-    # for i in arr:
-    #     if i > h_index:
-    #         h_index += 1
-    #     else:
-    #         return h_index
+    h_index = 0
+    for i in arr:
+        if i > h_index:
+            h_index += 1
+        else:
+            return h_index
 
 print(h_index_calculator([6,5,3,1,0]))
+print(h_index_calculator([100,34,23,15,11,4,2,1]))

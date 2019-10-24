@@ -82,8 +82,8 @@ A[3], B[3] \\
 \end{solution}
 
 \item (3 pts) Illustrate how to apply the QuickSelect algorithm to find the $k = 4$th smallest element in the given array: \texttt{A = [5, 3, 4, 9, 2, 8, 1, 7, 6]} by showing the recursion call tree.
-\begin{solution}
-
+\begin{solution} Drawing on following page. \\
+\includegraphics[scale=0.7]{PS8a-Q2.png}
 \end{solution}
 \pagebreak
 \item (1 pt) Explain in 2-3 sentences the purpose of the Median of Medians algorithm.
@@ -92,7 +92,20 @@ The idea of the median of medians algorithm is to find a pivot for quicksort to 
 \end{solution}
 
 \item (4 pts) Illustrate how to apply the Median of Medians algorithm (A Deterministic QuickSelect algorithm) to find the $4$th largest element in the following array: \texttt{A = [6, 10, 80, 18, 20, 82, 33, 35, 0, 31, 99, 22, 56, 3, 32, 73, 85, 29, 60, 68, 99, 23, 57, 72, 25]}.
-\begin{solution}
+\begin{solution} Steps: \\
+Break A into lists consisting of 5 elements each and sort them: \\
+$A_1 = [6, 10, 18, 20, 80]$, $A_2 = [0, 31, 33, 35, 82]$, $A_3 = [3, 22, 32, 56, 99]$, $A_4 = [29, 60, 68, 73, 85]$, $A_5 = [23, 25, 57, 72, 99]$ \\ \\
+Place medians from each list into a new list M and find the median of medians: \\
+M = [18, 33, 32, 68, 57], Median of M = 32 \\ \\
+Use the median of medians as a pivot for A to reconstruct an A where all elements $<$ pivot are on the left and all elements $>$ pivot are to the right:\\
+A = [6, 10, 18, 20, 0, 31, 3, 22, 29, 23, 25, 32, 80, 33, 35, 82, 56, 99, 60, 68, 73, 85, 57, 72, 99] \\ \\
+Now we can just look at the right side of the pivot because there are $>$ four elements that are bigger than the pivot: \\
+$A_r = [80, 33, 35, 82, 56, 99, 60, 68, 73, 85, 57, 72, 99]$ \\ \\
+Sort $A_r$: \\
+$SA_r = [33, 35, 56, 57, 60, 68, 72, 73, 80, 82, 85, 99, 99]$ \\ \\
+Get 4th to last element in $SA_r$: \\
+4th Largest element  = 82
+
 
 \end{solution}
 \pagebreak
@@ -106,8 +119,20 @@ The peaked array algorithm can operate in sub-linear time because it uses a simi
 \end{solution}
 
 \item (2 pts) Re-write the peaked array algorithm to find a single valley in an array, such as $A=[56, 43, 32, 21, 23, 25, 57]$. The valley would be 21.
-\begin{solution}
-
+\begin{solution}Code: 
+\begin{verbatim}
+def findPeak(A, s, t):
+   mid = floor((s + t / 2)
+   if t - s + 1 == 3: //Base Case
+      return A[mid]
+   if A[mid] < A[mid+1] and A[mid] < A[mid-1]:
+      return A[mid]
+   if A[mid] > A[mid+1]:
+      return findPeak(A, mid+1, t)
+   else:
+      return findPeak(A, s, mid-1)
+\end{verbatim}
+Explaination: All I've done is reversed all of the comparison operators in the function. If the mid is less than it's surrounding neighbors, then it must be the valley. If it's greater than the element to the right, the valley must be in the right half of the array. It it isn't then it must be in the left.
 \end{solution}
 
 \end{enumerate}

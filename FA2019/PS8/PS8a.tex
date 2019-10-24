@@ -69,8 +69,16 @@
 
 \begin{enumerate}
 \item (2 pts) If the arrays, $A=[12, 14, 23, 34]$ and $B=[11, 13, 22, 35]$ are merged, list the indices in $A$ and $B$ that are compared to each other. For example, $A[0], B[0]$ means that $A[0]$ is compared to $B[0]$.
-\begin{solution}
-
+\begin{solution} Comparisons:
+\begin{center}
+A[0], B[0] \\
+A[0], B[1] \\
+A[1], B[1] \\
+A[1], B[2] \\
+A[2], B[2] \\
+A[2], B[3] \\
+A[3], B[3] \\
+\end{center}
 \end{solution}
 
 \item (3 pts) Illustrate how to apply the QuickSelect algorithm to find the $k = 4$th smallest element in the given array: \texttt{A = [5, 3, 4, 9, 2, 8, 1, 7, 6]} by showing the recursion call tree.
@@ -80,7 +88,7 @@
 \pagebreak
 \item (1 pt) Explain in 2-3 sentences the purpose of the Median of Medians algorithm.
 \begin{solution}
-
+The idea of the median of medians algorithm is to find a pivot for quicksort to try to get as optimal of a solution as possible. This algorithm finds the medians from multiple lists of randomly selected elements, then selects the median of those medians. This produces a median that should be close to the middle of the array to be sorted.
 \end{solution}
 
 \item (4 pts) Illustrate how to apply the Median of Medians algorithm (A Deterministic QuickSelect algorithm) to find the $4$th largest element in the following array: \texttt{A = [6, 10, 80, 18, 20, 82, 33, 35, 0, 31, 99, 22, 56, 3, 32, 73, 85, 29, 60, 68, 99, 23, 57, 72, 25]}.
@@ -93,7 +101,8 @@
 \item (2 pts) Explain how the peaked array algorithm works in sub-linear time? 
 (You may use the recurrence relation to help with the explanation)
 \begin{solution}
-
+The peaked array algorithm can operate in sub-linear time because it uses a similar divide-and-conquer technique. We divide the array in half, and if the middle element is larger than all of it's nieghbors, then it must be the peak. If the middle is less than the right nieghbor, then the peak must be right of the middle of the array. And the same for the left. This uses the same approach used in binary search which allows us to bring the runtime down from $O(n)$ to $O(log(n))$. For the example above, we would start with:
+\\Mid $= 17$ ,  $17 > 16 $ and  $17 > 14$ Therefore, 17 must be the peak in the array.
 \end{solution}
 
 \item (2 pts) Re-write the peaked array algorithm to find a single valley in an array, such as $A=[56, 43, 32, 21, 23, 25, 57]$. The valley would be 21.

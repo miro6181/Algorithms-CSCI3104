@@ -53,6 +53,7 @@ class SortArr:
                 count += 1
         return count
 
+#Test Cases
 arr1 = SortArr(2**2)
 print("Array 1 Slow: " + str(arr1.slow_sort()))
 print("Array 1 Fast: " + str(arr1.fast_sort(arr1.rand_arr)) + "\n")

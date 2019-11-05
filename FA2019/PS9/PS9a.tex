@@ -81,28 +81,39 @@
 
     \end{solution}
 
-
-\begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.85]{PS9a_Q1.png}
-\end{center}
-\end{figure}
-    \item (1 pts) Which cell has the optimal value and what is the optimal value for the given problem?
-    \begin{solution}
-Cell (5, 10) holds the optimal solution of 7.
-    \end{solution}
-    
-    \item (2 pts) List out the optimal subset and provide it's weight and value.
-    \begin{solution} Optimal Subset: \\
-\begin{center}
-\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c| } 
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| } 
  \hline
-Weight & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+Weight & Value & i/w & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
 \hline
-Value & 0 & 2 & 2 & 2 & 3 & 5 & 6 & 6 & 6 & 7 & 7 \\
+4 & 3 & A[0,...,0] & 0 & 0 & 0 & 0 & 3 & 3 & 3 & 3 & 3 & 3 & 3 \\
+ \hline
+ &  &  & $\uparrow$ & $\leftarrow$ &  &  &  &  &  &  &  &  &  \\
+ \hline
+1 & 2 & A[0,...,1] & 0 & 2 & 2 & 2 & 3 & 5 & 5 & 5 & 5 & 5 & 5 \\
+ \hline
+ &  &  &  & $\uparrow$  & $\leftarrow$  & $\leftarrow$  & $\leftarrow$ &  &  &   &  &  &  \\
+ \hline
+3 & 1 & A[0,...,2] & 0 & 2 & 2 & 2 & 3 & 5 & 5 & 5 & 5 & 5 & 5 \\
+ \hline
+ &  &  &  &  &  &  & $\uparrow$ & $\leftarrow$ & $\leftarrow$ & $\leftarrow$  & $\leftarrow$ & $\leftarrow$ & $\leftarrow$ \\
+ \hline
+5 & 4 & A[0,...,3] & 0 & 2 & 2 & 2 & 3 & 5 & 6 & 6 & 6 & 7 & 9 \\
+ \hline
+ &  &  &  &  &  &  &  &  &  &  &  &  & $\uparrow$ \\
+ \hline
+6 & 3 & A[0,...,4] & 0 & 2 & 2 & 2 & 3 & 5 & 6 & 6 & 6 & 7 & 9 \\
  \hline
 \end{tabular}
 \end{center}
+    \item (1 pts) Which cell has the optimal value and what is the optimal value for the given problem?
+    \begin{solution}
+Cell (5, 10) holds the optimal solution of 9.
+    \end{solution}
+    
+    \item (2 pts) List out the optimal subset and provide it's weight and value.
+    \begin{solution} Optimal Subset: \\ \\
+\{A[0], A[1], A[3]\}, Weight = 10, Value = 9
     \end{solution}
 
 \end{enumerate}

@@ -108,9 +108,20 @@ If Q1 asks for a python code, please submit it with the following naming convent
 	\end{itemize}
 	\label{q:align:code}
 	
-	\begin{solution}
-	
-	
+	\begin{solution} Matrix: 
+\begin{verbatim}
+[[ 0  1  2  3  4  5  6  7  8  9 10 11]
+ [ 1  2  3  1  2  3  4  5  6  7  8  9]
+ [ 2  3  4  2  1  2  3  4  5  6  7  8]
+ [ 3  4  5  3  2  3  4  5  6  7  8  1]
+ [ 4  5  6  4  3  4  5  6  7  8  9  2]
+ [ 5  6  7  5  4  1  2  1  2  3  4  3]
+ [ 6  7  8  6  1  2  3  2  3  4  5  4]
+ [ 7  8  9  7  2  3  4  3  4  5  6  5]
+ [ 8  9 10  8  3  4  5  4  5  1  2  3]
+ [ 9 10 11  9  4  5  6  5  6  2  1  2]
+ [10 11 12 10  5  6  7  6  7  3  2  1]]
+	\end{verbatim}
 	\end{solution}
 	
 	
@@ -118,25 +129,23 @@ If Q1 asks for a python code, please submit it with the following naming convent
 	Justify your answer.
 
 	\begin{solution}
-	
-	
+	$O(n^4)$ With the implementation for alignStrings, the asymptotic runtime is $O(n^2)$, for extract, it would take $O(n)$, and common substrings would take $O(n^2)$
 	\end{solution}
+\pagebreak
 
 
 
 	\item (6 pts) \textbf{Plagiarism detector} - String alignment algorithms can be used to detect changes between different versions of the same document (as in version control systems) or to detect verbatim copying between different documents (as in plagiarism detection systems).
 	
-	The two {song lyrics} files for PS10b (see class Canvas) contain lyrics of two different songs in text format. Use your functions from~\eqref{q:align:code} with $c_{insert} = 1$, $c_{delete} = 1$, $c_{sub} = 1$ to align the text of these two documents. Utilize your \textbf{commonSubstrings} function for plagiarism detection. Present the results of your analysis, including a reporting of all the substrings in $x$ of length $L=10$ or more that could have been taken from $y$ in two columns with the first being the length of the substring and the second being the actual common substring obtained via continuous 'no-op' run.  \\Briefly comment on whether these songs could be reasonably considered original works, under CU's academic integrity policy.
+	The two {song lyrics} files for PS10b (see class Canvas) contain lyrics of two different songs in text format. Use your functions from~\eqref{q:align:code} with $c_{insert} = 1$, $c_{delete} = 1$, $c_{sub} = 1$ to align the text of these two documents. Utilize your \textbf{commonSubstrings} function for plagiarism detection. Present the results of your analysis, including a reporting of all the substrings in $x$ of length $L=10$ or more that could have been taken from $y$ in two columns with the first being the length of the substring and the second being the actual common substring obtained via continuous 'no-op' run.  \\Briefly comment on whether these songs could be reasonably considered original works, under CU's academic integrity policy.\pagebreak
 	
 	
 	\begin{solution}
-	
-	
+	I don't think these would be considered original works because they use so much of the same verbiage with different seperating vocabulary. 
 	\end{solution}
 	
 	\end{enumerate}
 \end{enumerate}
-
 
 \end{document}
 

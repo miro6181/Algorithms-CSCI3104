@@ -135,7 +135,7 @@ If Q1 asks for a python code, please submit it with the following naming convent
 	\begin{enumerate}
 	\item (10 pts) Ginny Weasley is working on a particularly tricky instance of this problem for her Witchcraft and Algorithms class, and she believes she has written down a ``witness'' for a particular graph $G$ in the form of a path $P$ on its vertices. Explain how she should verify in polynomial time whether $P$ is or is not a Hamiltonian cycle. (And hence, demonstrate that the problem of Hamiltonian Cycle is in the complexity class NP.)
 	\begin{solution}
-    
+    In order to determine if this is a hamiltonian cycle in polynomial time, we must visit every vertex along the path and count how many times each vertex has been visited. If a vertex is visited more than one time and is not the starting or ending node, then there is no way it can be apart of the hamiltonian cycle because that contradicts the definition. P must also cover every vertex in the graph. This progress would require $O(|V| + |E|)$ time and the counting can be done in $O(|V|)$ time and thus can be done in polynomial time. Since this takes polynomial time, this problem belongs to the NP class of problems.
     \end{solution}
     \pagebreak
     
@@ -145,7 +145,21 @@ If Q1 asks for a python code, please submit it with the following naming convent
 	
 	Describe an algorithm that will allow Ginny to use the Oracle to solve this problem by asking it a series of questions, each involving a modified version of the original graph $G$. Her solution must not cost more Knuts than a number that grows polynomially as a function of the number of vertices in $G$. (Hence, prove that if we can solve the Hamiltonian cycle \textit{decision} problem in polynomial time, we can solve its \textit{search} problem as well.)\\
 		\begin{solution}
-    
+    Pseudocode:
+\begin{verbatim}
+def has_hamiltonian_cycle(G):
+   if G contains no hamiltonian cycle:
+      return False
+   else:
+      for every e in G:
+         G1 = G - e
+         if G1 has no hamiltonian cycle:
+            e is part of cycle
+         else:
+            remove e from G1
+      return G1
+\end{verbatim}
+This algorithm will go through every vertex in the graph and it will determine weather it is part of the cycle. This will determine if G has an HC $O(|E|)$ times because it is comparing every graph without each of the edges once.  $\therefore$ if the determination can be done in polynomial time, so can the search.
     \end{solution}
 	
 	\end{enumerate}

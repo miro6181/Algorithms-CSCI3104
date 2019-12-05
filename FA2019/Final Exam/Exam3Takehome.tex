@@ -96,7 +96,9 @@ MergeWithErrors(A, p, q, r)
 \begin{enumerate}
     \item (5 pts) List the three errors in the MergeWithErrors algorithm.
     \begin{solution}
-    
+    1. The j++ in the first if satement should be i++ instead of j++. \\ \\
+2. The i ++ in the else statement should be j++ instead of i++. \\ \\
+3. In the first if statement, it should be: if(low[i] $<$ high[j]):
     \end{solution}
     \pagebreak
     
@@ -104,7 +106,8 @@ MergeWithErrors(A, p, q, r)
     \\ $$A=[0,1,3,5,2,4,6,7]$$
      $$MergeWithErrors(A, 0, 3, 7)$$
     \begin{solution}
-    
+    A = [0, 0, 0, 0, 0, 1, 3, 5] \\ 
+Because we are incrementing j instead of i, the first element of low is going to be smaller than every element in high in this case. So the first 4 elements will be 0, and then when we finally increment i, we still take the first element of low which is zero. We then take the rest of low.
     \end{solution}
     \pagebreak
     
@@ -135,7 +138,7 @@ MergeWithErrors(A, p, q, r)
 4 2 6 5
 
 \begin{enumerate}
-\item (10 pts) Write a non-greedy, efficient and optimal algorithm for a strategy to play EPIC!. The runtime needs to be less than $\theta(n^2)$. Player 1 will use this strategy and Player 2 will use a greedy strategy of choosing the smallest card. \textbf{Note: Your choice of algorithmic strategy really matters here. Think about the types of algorithms we've learned this semester when making your choice.} You need to provide an explanation of how your algorithm works to receive credit for this question.
+\item (10 pts) Write a non-greedy, efficient and optimal algorithm for a strategy to play EPIC!. The runtime needs to be less than or equal to $\theta(n^2)$. Player 1 will use this strategy and Player 2 will use a greedy strategy of choosing the smallest card. \textbf{Note: Your choice of algorithmic strategy really matters here. Think about the types of algorithms we've learned this semester when making your choice.} You need to provide an explanation of how your algorithm works to receive credit for this question.
     \begin{solution}
     
     \end{solution}
@@ -146,32 +149,60 @@ MergeWithErrors(A, p, q, r)
 
 \pagebreak
 \item (22 pts) 
-	In a previous homework assignment and classroom activity, we worked on the problem of finding the peak in an array, where array $A[1, 2, \cdots, n]$ with the property that the subarray $A[1..i]$ has the property that $A[j]>A[j+1]$ for $1\leq j< i$, and the subarray $A[i..n]$ has the property that $A[j]<A[j+1]$ for $i\leq j < n$. For example, $A=[16, 15, 10, 9, 7, 3, 6, 8, 17, 23]$ is a peaked array.\\
+	In a previous homework assignment and classroom activity, we worked on the problem of finding the valley in an array, where array $A[1, 2, \cdots, n]$ with the property that the subarray $A[1..i]$ has the property that $A[j]>A[j+1]$ for $1\leq j< i$, and the subarray $A[i..n]$ has the property that $A[j]<A[j+1]$ for $i\leq j < n$. For example, $A=[16, 15, 10, 9, 7, 3, 6, 8, 17, 23]$ is a valleyed array.\\
 	
-	Now consider the \textit{multi-peaked} generalization, in which the array contains $k$ peaks, i.e., it contains $k$ subarrays, each of which is itself a peaked array. Suppose that $k=2$ and we can guarantee that neither peak is closer than $n/4$ positions to the middle of the array, and that the ``joining point'' of the two singly-peaked subarrays lays in the middle half of the array. 
+	Now consider the \textit{multi-valley} generalization, in which the array contains $k$ valleys, i.e., it contains $k$ subarrays, each of which is itself a valleyed array. Suppose that $k=2$ and we can guarantee that neither valley is closer than $n/4$ positions to the middle of the array, and that the ``joining point'' of the two singly-valleyed subarrays lays in the middle half of the array. 
 	\begin{enumerate}
 	    \item (8 pts) Now write an algorithm that returns the minimum element of $A$ in sublinear time.
-	    \begin{solution}
-    
+	    \begin{solution} Pseudocode: \\
+\begin{verbatim}
+def findValley(subA, L, H):
+   n = len(subA) - 1
+   mid = L + (H - L) / 2
+   if (mid == 0 or subA[mid - 1] >= subA[mid]) and (mid == n - 1 or
+   subA[mid + 1] >= subA[mid]):
+      return subA[mid]
+   elif mid > 0 or subA[mid - 1] < subA[mid]:
+      return findValley(subA, L, mid - 1)
+   else:
+      return findValley(subA, mid + 1, H)
+
+def subLinFindValley(A):
+   n = len(A) - 1
+   low = A[0. . . n / 4]
+   high = A[3n/4 . . . n]
+   
+   return max(findValley(low,0,len(low)-1), findValley(high,0,len(high)-1))
+   
+   
+   
+\end{verbatim}
         \end{solution}
         \pagebreak
 
 	    \item (10 pts) Prove that your algorithm is correct. (Hint:\ prove that your algorithm's correctness follows from the correctness of another correct algorithm we already know.)
 	    \begin{solution}
-    
+    My algorithm contains a helper function called findValley that does the majority of the work for the algorithm. \\ \\
+subLinFindValley - This is the driver function of the program. Given that the two valleys are not closer than $\frac{n}{4}$ to the center point of the array, we can say that it is the case that there is not a valley from $\frac{n}{4}$ to $\frac{3n}{4}$. \\ \\ 
+$\therefore$ The middle half of the array can be ignored because our valley does not reside in the middle half. \\ \\
+findValley - Using induction: \\ \\
+Base Case: 
         \end{solution}
         \pagebreak
 
 	    \item (4 pts) Give a recurrence relation for its running time, and solve for its asymptotic behavior.
 	   \begin{solution}
-    
+    $T(n) = T(\frac{n}{2}) + \Theta(1)$ \\ \\
+Using master's Theorem: \\ \\
+$log_{b}a = 0$, $k=0$ \\ \\
+Case 2: Since $log_{b}a = k$, then $T(n) \in \Theta(log_{2}n)$
         \end{solution}
         \pagebreak
 
 	\end{enumerate}
 
 \item (18 pts) Suppose we are given a set of non-negative distinct numbers $S$ and a target $t$. We want to find if there exists a subset of $S$ that sums up to \textbf{exactly} $t$ and the cardinality of this subset is $k$. 
-\\Write a python program that takes an input array $S$, target $t$, and cardinality $k$, and returns the subset with cardinality $k$ that adds to $t$ if it exists, and returns $False$ otherwise. Your algorithm needs to run in $O(nt)$ time where $t$ is the target and $n$ is the cardinality of $S$. In your code, provide a brief discussion of your runtime through comments, referring to specific elements of your code.\\
+\\Write a python program that takes an input array $S$, target $t$, and cardinality $k$, and returns the subset with cardinality $k$ that adds to $t$ if it exists, and returns $False$ otherwise. Your algorithm needs to run in $O(ntk)$ time where $t$ is the target and $n$ is the cardinality of $S$. In your code, provide a brief discussion of your runtime through comments, referring to specific elements of your code.\\
 \\For example - 
 
 Input: s = \{2,1,5,7\}, t = 4, k = 2\\

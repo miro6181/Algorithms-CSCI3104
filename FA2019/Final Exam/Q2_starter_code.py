@@ -96,6 +96,27 @@ def draw_graph(G):
     pylab.title("Input Graph")
     pylab.show()
 
+def dp_kPaths(G, k):
+    import numpy as np
+    # Create Matrix to store sub-problems
+    m = np.array([[np.isinf(np.inf) for x in range(len(G.nodes()))] for x in range(k + 1)])
+
+    # Set distance to EC as 0
+    m[0][0] = 0
+
+    # Iterate though array
+    for i in range(k):
+        for j in range(len(G.nodes())):
+            if m[i][j - 1] < m[i][j]:
+                m[i + 1][j] = m[i][j - 1]
+
+    # If for loops never reached the final row, return failed.
+    if m[k][len(G.nodes()) - 1] == np.isinf(np.inf):
+        return "Not possible to reach destination"
+    else:
+        kpath = []
+
+
 
 
 def main():
@@ -115,6 +136,8 @@ def main():
     # Call your function here that takes in the Graph "G"
     # and returns the shortest path
     # (note that it is not the length but the entire path)
+
+    print(dp_kPaths(G, 2))
 
 
 

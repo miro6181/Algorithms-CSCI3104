@@ -97,7 +97,9 @@ If Q1 asks for a python code, please submit it with the following naming convent
 	
 	\item (4 pts) Enumerate at least 3 reasons why $h_1(x)$ is a bad hash function relative to the ideal behavior of uniform hashing.
 	\begin{solution}
-    
+    1. All different permutations of a string will hash to the same location in the distribution causing many collisions. \\ \\
+2. $h_1(x)$ is also a bad hash function because it uses chaining in addition to bad hashing instead of using something like open addressing. This leads to long lists of names in the same bin. \\ \\
+3. There is no element of randomness and in a perfect uniform hash, randomness is how the distribution can be spread out.
     \end{solution}
 	\pagebreak
 	

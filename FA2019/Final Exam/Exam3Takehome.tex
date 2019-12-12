@@ -117,14 +117,34 @@ Because we are incrementing j instead of i, the first element of low is going to
 \item (25 pts) Let $G=(V,E)$ be a directed weighted graph of the pathways on the CU-Boulder campus, with edge weights being distances between different buildings/intersections. Engineering and Humanities are two vertices of $G$, and $k>0$ is a given integer. Assume that you will stop at every building/intersection you pass by. A shortest $k$-stop path is a shortest path between two vertices with exactly $k$ stops.
 \begin{enumerate}
     \item (5 pts) Provide an example showing that the shortest $k$-stop path can't necessarily be found using Breadth-first search or Dijkstras algorithm. You need an example for each algorithm that shows where it fails.
-    \begin{solution}
-    
+    \begin{solution}Examples: \\
+BFS: The way BFS is structured, if a vertex is put into the queue that isn't optimal, then it will terminate without searching for a more optimal solution. BFS is strictly for finding a path from a to b. For example, if we were looking for a path from s-t and there were two paths from s-t, if the path with larger edge weight is queued first, then the algorithm will terminate before it has found the optimal solution. \\ \\
+Dijkstra's: If our graph has a negative edge, Dijkstra's may not be able compute the shortest path from the source to the sink. For example, if every path going towards the destination was positive and all paths in line or backwards were considered negative, Dijkstra's may not find the optimal solution.
     \end{solution}
     \pagebreak
 
     \item (10 pts) Design an algorithm to find the shortest path from Engineering to Humanities that contains exactly $k$ stops (excluding Engineering and Humanities). Notice that a $k$-stop path from these two buildings may not exist. So, your algorithm should also take care of such possibility. You need to provide an explanation of how your algorithm works to receive credit for this question.
     \begin{solution}
-    
+    We must use dynamic programming with tabulation to store sub-problems: \\ \\
+\begin{verbatim}
+def dp-kPaths(G):
+   m = create matrix of size k+1 x |V|
+   set every element of m to infinity
+
+   EC = 0
+   for  i from 0 to k:
+      for j equal to every node:
+         if value of node + edge > j:
+            m[i + 1][j] = value of node to edge
+   
+   if HUMN = INF:
+      return "Not possible to reach distination"
+   else:
+      path = []
+      backtrack from humanities storing each stop in path
+      return path
+            
+\end{verbatim}
     \end{solution}
     \pagebreak
 
@@ -139,8 +159,24 @@ Because we are incrementing j instead of i, the first element of low is going to
 
 \begin{enumerate}
 \item (10 pts) Write a non-greedy, efficient and optimal algorithm for a strategy to play EPIC!. The runtime needs to be less than or equal to $\theta(n^2)$. Player 1 will use this strategy and Player 2 will use a greedy strategy of choosing the smallest card. \textbf{Note: Your choice of algorithmic strategy really matters here. Think about the types of algorithms we've learned this semester when making your choice.} You need to provide an explanation of how your algorithm works to receive credit for this question.
-    \begin{solution}
-    
+    \begin{solution}Pseudocode: 
+\begin{verbatim}
+def DPEpic(arr):
+   dpTable = [[0 for x in range(len(arr)) for x in range(len(arr))
+   
+   for i in range(len(arr)):
+      for j in range(i, len(arr)):
+         if i + 2 <= j:
+            select dpTable[i + 2][j]
+         if i + 1 <= j - 1:
+            select dpTable[i + 1][j - 1]
+         if i <= j - 2:
+            select dpTable[i][j - 1]
+
+         dpTable[i][j] = min of the three options
+
+   return dpTable[0][len(arr) - 1]
+\end{verbatim}
     \end{solution}
     \pagebreak
 
@@ -172,7 +208,7 @@ def subLinFindValley(A):
    low = A[0. . . n / 4]
    high = A[3n/4 . . . n]
    
-   return max(findValley(low,0,len(low)-1), findValley(high,0,len(high)-1))
+   return min(findValley(low,0,len(low)-1), findValley(high,0,len(high)-1))
    
    
    
@@ -186,7 +222,10 @@ def subLinFindValley(A):
 subLinFindValley - This is the driver function of the program. Given that the two valleys are not closer than $\frac{n}{4}$ to the center point of the array, we can say that it is the case that there is not a valley from $\frac{n}{4}$ to $\frac{3n}{4}$. \\ \\ 
 $\therefore$ The middle half of the array can be ignored because our valley does not reside in the middle half. \\ \\
 findValley - Using induction: \\ \\
-Base Case: 
+Inductive Hypothesis: If findValley works to find a valley where a valley is definded as both the right and left neighbor are greater than the valley value for all inputs, then we can be sure that findValley will find the valley of an array. \\ \\
+Base Case: subA[mid - 1] $>=$ subA[mid] and subA[mid + 1] $>=$ subA[mid]. Since our array is valleyed, it means it is sorted up to the valley and after the valley. Assuming there aren't two valleys in the same sub list of A, then it must be the case that subA[mid] is the valley. \\ \\
+Inductive Step: Assuming there aren't two valleys on a single outer $\frac{1}{4}$ of the array, and the array is sorted in decending order up to the valley and sorted in ascending order after the valley, then the array is split into two equal length arrays similar to the strategy used in binary search. Since the array is sorted, every time it is split, if the element to the right of the valley is $<$ the valley, we can forget about the left side because the valley must be in the right half of the array as per the definition of a valley. \\ \\
+Conclution: Because it must be the case that the valley is in the smaller half of the array, and recursion stops when the mid = 0 or mid $<$ mid + 1 and mid -1 then our inductive hypothesis holds and the algorithm must be correct.
         \end{solution}
         \pagebreak
 
